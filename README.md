@@ -1,12 +1,12 @@
-# Project Name
+# Athena
 
-> Pithy project description
+> Visualize the News
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Taylor Hayduk
+  - __Scrum Master__: Joyce Liu
+  - __Development Team Members__: Rod Machen, Tisha Greenidge
 
 ## Table of Contents
 
