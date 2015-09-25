@@ -20,15 +20,14 @@
 
 ## Usage
 
-> This web application allows uses to see a visual representation of the news, highlighting positive and negative sentiment via IBM Watson's Alchemy technology. 
+> This web application allows users to see a visual representation of the news, highlighting positive and negative sentiment via IBM Watson's Alchemy technology. 
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Angular 1.3.x
+- D3
+- Foundation for Apps
+- Gulp ^3.9.0
 
 ## Development
 
@@ -44,7 +43,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://github.com/HRR8-Athena/HRR8-Athena/issues)
 
 
 ## Contributing
