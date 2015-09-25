@@ -1,12 +1,12 @@
 # Athena
 
-> Visualize the News
+> *"Get a Feel for the News"*
 
 ## Team
 
-  - __Product Owner__: Taylor Hayduk
-  - __Scrum Master__: Joyce Liu
-  - __Development Team Members__: Rod Machen, Tisha Greenidge
+  - __Product Owner__: [Taylor Hayduk](https://github.com/taylorhayduk)
+  - __Scrum Master__: [Joyce Liu](https://github.com/LiuJoyceC)
+  - __Development Team Members__: [Tisha Greenidge](https://github.com/tgreenidge), [Rod Machen](https://github.com/tgreenidge)
 
 ## Table of Contents
 
