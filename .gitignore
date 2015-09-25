@@ -28,3 +28,7 @@ dist/
 node_modules/
 npm-debug.log
 .sass-cache
+
+# Hidden Files
+.DS_Store
+client/.DS_Store.
