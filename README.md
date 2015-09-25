@@ -20,7 +20,7 @@
 
 ## Usage
 
-> Some usage instructions
+> This web application allows uses to see a visual representation of the news, highlighting positive and negative sentiment via IBM Watson's Alchemy technology. 
 
 ## Requirements
 
