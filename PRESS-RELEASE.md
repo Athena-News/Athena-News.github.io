@@ -1,4 +1,4 @@
-# Project Name #
+# Athena #
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -15,30 +15,28 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
- 
-## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
 
-## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+## *"Get a Feel for the News"* ##
+  > Using cutting-edge artifical intelligence, Athena presents the news in a way that makes it easy to see what's up and what's down.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > Athena takes todays top news, analyzes it with the latest technology, and gives the reader an engaging graphical representation of how the various entities in the story are being talked about. Whether a person, place, or company is seen as positive or negative is displaying in an easily-digestable form.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > How is the President represented in this article? Athena knows. Is this company shown in a negative or a positive light? Athena knows. 
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > Using the Alchemy project from IBM's Watson initiative, Athena is able to parse any text and present those more subtle aspects of it, giving the reader a true feel for the news.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > "We believe Athena is just the thing to get people started in the morning. The interactive graphics and compelling information are a perfect match." Peggy Olson, Vice President of Marketing
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > To use this amazing product, simply navigate your browser to the [home page](http://hrr8-athena.github.io/HRR8-Athena/), and you'll be *feeling the news* in no time.
 
-## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+## What are our readers saying? ##
+  > "I love it! Athena lets me interact with today's news in totally unique way."
+  - Joan Holloway
 
-## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+## It's Just That Easy! ##
+  > Head over to the [Athena home page](http://hrr8-athena.github.io/HRR8-Athena/) and get started today!
