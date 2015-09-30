@@ -1,15 +1,94 @@
-angular.module('athena', [])
-.controller(function($scope) {
-  $scope.data = {};
+angular.module('Athena', ['firebase'])
+
+.controller('AppController', function($scope, Data, Options) {
+
+  $scope.selection = {};
+
+  $scope.categories = Options.newsCategories;
+
+  $scope.graphTypes = Options.graphTypes;
+
+  $scope.selection.graphType = 'Pie';
 
   // Will be activated when a news
   // category tab is clicked on
-  $scope.animateD3 = function(category) {
+  $scope.getData = function(category) {
+    console.log('animateD3 has run');
     // Retrieve data from Firebase
-    // retrieve function not yet written
-    $scope.data = retrieve(category);
+    // Then load first article
 
-    //Pass data to the d3 animator function
-    animate($scope.data);
+    Data.getData(category).then(function(articles) {
+      $scope.articles = articles;
+      $scope.loadArticle(0);
+    });
+
   };
+
+  $scope.loadArticle = function(ind) {
+    console.log('loadArticle was run');
+    $scope.selection.article = $scope.articles[ind];
+    // May not be necessary if already sorted in Firebase
+    $scope.selection.article.keywords.sort(function(a, b) {
+      return b.relevance - a.relevance;
+    });
+
+    // Make a copy of keywords array to pass to D3 function
+    var keywords = $scope.selection.article.keywords.slice();
+
+    // Renders D3
+    //$scope.graphTypes[$scope.graphType](keywords);
+
+  };
+
+  $scope.getData('topNews');
+
+
+
+})
+
+.factory('Data', function($firebaseObject) {
+  //will hook to firebase instead of returning dummy data
+  var getData = function(category) {
+    console.log('getData has run');
+
+    var firebaseUrl = 'https://boiling-inferno-1345.firebaseio.com/'; //will update
+
+
+    return $firebaseObject(new Firebase(firebaseUrl))
+      .$loaded()
+      .then(function(data) {
+        return data[category];
+      });
+
+  };
+
+  return {
+    getData: getData,
+  };
+
+})
+
+.factory('Options', function() {
+
+  //temporary, will delete when d3 function ready
+  var create = function()  {console.log('d3 got rendered');};
+
+  var graphTypes = {
+    Pie: create,
+  };
+
+  var newsCategories = [
+    'topNews',
+    'World',
+    'US',
+    'Politics',
+    'Tech',
+    'Science',
+  ];
+
+  return {
+    graphTypes: graphTypes,
+    newsCategories: newsCategories,
+  };
+
 });
