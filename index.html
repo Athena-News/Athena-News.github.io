@@ -59,7 +59,9 @@
     </div>
 
     <div class="footer">
-      <span ng-repeat="graphType in graphTypes">
+      <span ng-repeat="(graphType, func) in graphTypes">
+        <span ng-click="changeGraphType(graphType)">{{ graphType }}</span>
+      </span>
     </div>
 
 

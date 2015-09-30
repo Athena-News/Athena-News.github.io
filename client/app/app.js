@@ -36,9 +36,20 @@ angular.module('Athena', ['firebase'])
     var keywords = $scope.selection.article.keywords.slice();
 
     // Renders D3
-    //$scope.graphTypes[$scope.graphType](keywords);
+    $scope.graphTypes[$scope.selection.graphType](keywords);
 
   };
+
+  $scope.changeGraphType = function(graphType) {
+    $scope.selection.graphType = graphType;
+
+    // Make a copy of keywords array to pass to D3 function
+    var keywords = $scope.selection.article.keywords.slice();
+
+    // Renders D3
+    $scope.graphTypes[$scope.selection.graphType](keywords);
+
+  }
 
   $scope.getData('topNews');
 
@@ -71,10 +82,15 @@ angular.module('Athena', ['firebase'])
 .factory('Options', function() {
 
   //temporary, will delete when d3 function ready
-  var create = function()  {console.log('d3 got rendered');};
+  var create = function(keywords)  {
+    console.log('d3 got rendered');
+    console.log(keywords);
+  };
 
   var graphTypes = {
     Pie: create,
+    'Word Cloud': create,
+    'Bar Graph': create,
   };
 
   var newsCategories = [
