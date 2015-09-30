@@ -2,6 +2,8 @@ var createPie = function(keywords) {
 
   var created = false;
 
+  d3.select("#animation").selectAll("svg").remove()
+
   // Set pie to sort by sentiment, slice size is relevance
   var pie = d3.layout.pie()
     .sort(function(d, e) { return (d.sentiment.score || 0) - (e.sentiment.score || 0); } )
@@ -45,8 +47,8 @@ var createPie = function(keywords) {
       .domain([-1,0,1])
       .range(["#BD0000","#D3F3EE","#009F00"]);
 
-    created = true;
-    
+    //created = true;
+
   }
 
   var svg = d3.select("svg");
@@ -68,7 +70,7 @@ var createPie = function(keywords) {
 
     slice.enter()
       .insert("path")
-      .style("fill", function(d) { 
+      .style("fill", function(d) {
         if(d.data.sentiment.score) {
           console.log('coloring slice');
           return color(d.data.sentiment.score);
@@ -79,7 +81,7 @@ var createPie = function(keywords) {
     })
       .attr("class", "slice");
 
-    slice   
+    slice
       .transition().duration(1000)
       .attrTween("d", function(d) {
         this._current = this._current || d;
@@ -104,7 +106,7 @@ var createPie = function(keywords) {
       .text(function(d) {
         return d.data.text;
       });
-    
+
     function midAngle(d){
       return d.startAngle + (d.endAngle - d.startAngle)/2;
     }
@@ -138,7 +140,7 @@ var createPie = function(keywords) {
 
     var polyline = svg.select(".lines").selectAll("polyline")
       .data(pie(data))
-    
+
     polyline.enter()
       .append("polyline");
 
@@ -152,9 +154,9 @@ var createPie = function(keywords) {
           var pos = outerArc.centroid(d2);
           pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
           return [arc.centroid(d2), outerArc.centroid(d2), pos];
-        };      
+        };
       });
-    
+
     polyline.exit()
       .remove();
   };

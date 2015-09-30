@@ -10,12 +10,14 @@ var createWordCloud = function (keywords) {
     .domain([-1,0,1])
     .range(["#BD0000","#D3F3EE","#009F00"]);
 
+  d3.select("#animation").selectAll("svg").remove()
+
   // set word cloud rotaton, size, width
   d3.layout.cloud()
     .size([width, height])
     .words(keywords)
     .padding(10)
-    .text(function(d) { return d.text; }) 
+    .text(function(d) { return d.text; })
     .rotate(function() { return ~~(Math.random() * 2) * 90; }) //sets rotaton angle to 0 or 90
     .fontSize(function(d) { return d.relevance * 60 ; }) // formula used to increase font size
     .on("end", draw)
@@ -23,8 +25,8 @@ var createWordCloud = function (keywords) {
 
   function draw(words) {
      d3.select("#animation").append("svg")
-    .attr("width", width) 
-    .attr("height", height) 
+    .attr("width", width)
+    .attr("height", height)
     .attr("class", "wordcloud")
     .append("g")
     // without the transform, words words would get cutoff to the left and top, they would
