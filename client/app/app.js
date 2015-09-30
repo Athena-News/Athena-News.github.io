@@ -2,27 +2,13 @@ angular.module('Athena', ['firebase'])
 
 .controller('AppController', function($scope, Data, Options) {
 
-  $scope.selection = {};
-
   $scope.categories = Options.newsCategories;
 
   $scope.graphTypes = Options.graphTypes;
 
-  //$scope.selection.graphType = 'Pie';
-  $scope.selection.graphType = 'Word Cloud';
-
-  // Will be activated when a news
-  // category tab is clicked on
-  $scope.getData = function(category) {
-    console.log('animateD3 has run');
-    // Retrieve data from Firebase
-    // Then load first article
-
-    Data.getData(category).then(function(articles) {
-      $scope.articles = articles;
-      $scope.loadArticle(0);
-    });
-
+  $scope.selection = {
+    graphType: Options.defaultGraphType,
+    category: Options.defaultCategory,
   };
 
   $scope.loadArticle = function(ind) {
@@ -33,43 +19,45 @@ angular.module('Athena', ['firebase'])
       return b.relevance - a.relevance;
     });
 
-    // Make a copy of keywords array to pass to D3 function
-    var keywords = $scope.selection.article.keywords.slice();
-
-    // Renders D3
-    $scope.graphTypes[$scope.selection.graphType](keywords);
-
+    $scope.render();
   };
 
   $scope.changeGraphType = function(graphType) {
     $scope.selection.graphType = graphType;
+    $scope.render();
+  };
 
+  $scope.loadCategory = function(category) {
+    $scope.selection.category = category;
+    $scope.articles = data[category];
+    $scope.loadArticle(0);
+  };
+
+  $scope.render = function() {
     // Make a copy of keywords array to pass to D3 function
     var keywords = $scope.selection.article.keywords.slice();
-
-    // Renders D3
+    // Render D3 with function associated with current graph type
     $scope.graphTypes[$scope.selection.graphType](keywords);
+  };
 
-  }
-
-  $scope.getData('topNews');
-
-
+  Data.getData().then(function(data) {
+    $scope.loadCategory($scope.selection.category);
+  });
 
 })
 
 .factory('Data', function($firebaseObject) {
   //will hook to firebase instead of returning dummy data
-  var getData = function(category) {
+  var getData = function() {
     console.log('getData has run');
 
-    var firebaseUrl = 'https://boiling-inferno-1345.firebaseio.com/'; //will update
+    var firebaseUrl = 'https://boiling-inferno-1345.firebaseio.com/';
 
 
     return $firebaseObject(new Firebase(firebaseUrl))
       .$loaded()
       .then(function(data) {
-        return data[category];
+        return data;
       });
 
   };
@@ -85,7 +73,7 @@ angular.module('Athena', ['firebase'])
   //temporary, will delete when d3 function ready
   var create = function(keywords)  {
     console.log('d3 got rendered');
-    console.log(this);
+    console.log(keywords);
     console.log('just logged keywords in create')
   };
 
@@ -94,6 +82,8 @@ angular.module('Athena', ['firebase'])
     'Word Cloud': createWordCloud,
     'Bar Graph': create,
   };
+
+  var defaultGraphType = 'Pie';
 
   var newsCategories = [
     'topNews',
@@ -104,9 +94,13 @@ angular.module('Athena', ['firebase'])
     'Science',
   ];
 
+  var defaultCategory = 'topNews';
+
   return {
     graphTypes: graphTypes,
+    defaultGraphType: defaultGraphType,
     newsCategories: newsCategories,
+    defaultCategory: defaultCategory,
   };
 
 });
