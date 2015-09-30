@@ -44,8 +44,8 @@
           </form>
         </div>
 
-        <div class="d3-view">
-          This is where the d3 image goes
+        <div class="d3-view" id="animation" style="width:700px;height:250px">
+          <!-- This is where the d3 image goes -->
         </div>
 
       </span><span class="grid-1-5">
@@ -64,7 +64,10 @@
       </span>
     </div>
 
-
+<!--     Script for pie and dummyJSON (must go at end as it needs animation DIV dimensions) -->
+    <link rel='stylesheet' type='css' href='client/app/d3/animationStyles.css'>
+    <script src="client/app/d3/dummyJSON.js" charset="utf-8"></script>
+    <script src="client/app/d3/pie.js" charset="utf-8"></script>
 
   </body>
 </html>
