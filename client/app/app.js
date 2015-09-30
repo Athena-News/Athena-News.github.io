@@ -8,7 +8,8 @@ angular.module('Athena', ['firebase'])
 
   $scope.graphTypes = Options.graphTypes;
 
-  $scope.selection.graphType = 'Pie';
+  //$scope.selection.graphType = 'Pie';
+  $scope.selection.graphType = 'Word Cloud';
 
   // Will be activated when a news
   // category tab is clicked on
@@ -90,7 +91,7 @@ angular.module('Athena', ['firebase'])
 
   var graphTypes = {
     Pie: createPie,
-    'Word Cloud': create,
+    'Word Cloud': createWordCloud,
     'Bar Graph': create,
   };
 
