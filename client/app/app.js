@@ -23,13 +23,15 @@ angular.module('Athena', ['firebase'])
   };
 
   $scope.changeGraphType = function(graphType) {
+    console.log('changing graph type');
     $scope.selection.graphType = graphType;
     $scope.render();
   };
 
   $scope.loadCategory = function(category) {
+    console.log(category);
     $scope.selection.category = category;
-    $scope.articles = data[category];
+    $scope.articles = $scope.data[category];
     $scope.loadArticle(0);
   };
 
@@ -41,6 +43,7 @@ angular.module('Athena', ['firebase'])
   };
 
   Data.getData().then(function(data) {
+    $scope.data = data;
     $scope.loadCategory($scope.selection.category);
   });
 
@@ -57,6 +60,7 @@ angular.module('Athena', ['firebase'])
     return $firebaseObject(new Firebase(firebaseUrl))
       .$loaded()
       .then(function(data) {
+        console.log(data);
         return data;
       });
 
@@ -85,15 +89,15 @@ angular.module('Athena', ['firebase'])
   var defaultGraphType = 'Pie';
 
   var newsCategories = [
-    'topNews',
+    'Top News',
     'World',
     'US',
-    'Politics',
     'Tech',
     'Science',
+    'Opinion',
   ];
 
-  var defaultCategory = 'topNews';
+  var defaultCategory = 'Top News';
 
   return {
     graphTypes: graphTypes,
