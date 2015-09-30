@@ -52,6 +52,7 @@ var createPie = function(keywords) {
   var svg = d3.select("svg");
 
   // Invoke create function
+  create([]);
   create(keywords);
 
   // Create pie slices, labels, and polylines
