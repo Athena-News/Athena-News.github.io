@@ -1,12 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Athena">
+
   <head>
-    <link rel='stylesheet' type='css' href='styles.css'>
+    <!-- <link rel='stylesheet' type='css' href='styles.css'> -->
+    <script src="client/lib/d3/d3.js" charset="utf-8"></script>
+    <!-- <script src='client/app/lib/animate.js'></script> -->
+    <script src="client/lib/angular/angular.min.js" charset="utf-8"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+<!--    <script src="client/app/d3/dummyJSON.js" charset="utf-8"></script>
+    <script src="client/app/d3/pie.js" charset="utf-8"></script>   -->
+    <script src="client/app/app.js" charset="utf-8"></script>
+
   </head>
-  <body>
-  <p>Hello World</p>
-    <script src="/lib/d3/d3.js" charset="utf-8"></script>
-    <script src='animate.js'></script>
-    <div ng-view></div>
+
+  <body ng-controller="AppController">
+
+    <div class="header">
+      <span class="site-title grid-1-5">
+        <div><h1>Athena</h1></div>
+        <div><h4>Get a Feel For the News</h4></div>
+      </span><span class="category-tabs grid-4-5">
+        <div class="navigation">
+          <span ng-repeat="category in categories">
+            <span ng-click="getData(category)">{{ category }}</span>
+          </span>
+        </div>
+      </span>
+    </div>
+
+    <!-- d3-view and sidebar -->
+    <div>
+      <span class="grid-4-5">
+
+        <div class="select-article">
+          <span>Select one of today's top articles</span>
+          <form><!-- Might need ng-submit -->
+            <select id="article-dropdown">
+              <option ng-repeat="article in articles" value="{{ $index }}">
+                {{ article.title }}
+              </option>
+            </select>
+          </form>
+        </div>
+
+        <div class="d3-view">
+          This is where the d3 image goes
+        </div>
+
+      </span><span class="grid-1-5">
+
+        <div class="sidebar">
+          <div ng-repeat="keyword in selection.article.keywords">
+            {{ keyword.text }}
+          </div>
+        </div>
+      </span>
+    </div>
+
+    <div class="footer">
+      <span ng-repeat="(graphType, func) in graphTypes">
+        <span ng-click="changeGraphType(graphType)">{{ graphType }}</span>
+      </span>
+    </div>
+
+
+
   </body>
 </html>
