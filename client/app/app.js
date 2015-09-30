@@ -47,7 +47,7 @@ angular.module('Athena', ['firebase'])
 })
 
 .factory('Data', function($firebaseObject) {
-  //will hook to firebase instead of returning dummy data
+
   var getData = function() {
     console.log('getData has run');
 
@@ -74,7 +74,6 @@ angular.module('Athena', ['firebase'])
   var create = function(keywords)  {
     console.log('d3 got rendered');
     console.log(keywords);
-    console.log('just logged keywords in create')
   };
 
   var graphTypes = {
