@@ -84,11 +84,12 @@ angular.module('Athena', ['firebase'])
   //temporary, will delete when d3 function ready
   var create = function(keywords)  {
     console.log('d3 got rendered');
-    console.log(keywords);
+    console.log(this);
+    console.log('just logged keywords in create')
   };
 
   var graphTypes = {
-    Pie: create,
+    Pie: createPie,
     'Word Cloud': create,
     'Bar Graph': create,
   };
