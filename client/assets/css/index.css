@@ -1,0 +1,47 @@
+.logo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 40px;
+  /* color: #FECF00;*/
+  /*color: #055769;*/
+  color: white;
+
+}
+
+body {
+  background-color: #FFFFF3;
+}
+/*#71A69B*/
+.nav-tabs {
+  font-size: 45px;
+ /* color: #FECF00;*/
+  /*color: #055769;*/
+  color: white;
+}
+
+#main {
+  padding: 30px;
+}
+
+#sidebar {
+  padding: 30px;
+}
+
+.title {
+  text-align: center;
+}
+
+#animation {
+  height: 500px;
+  width: 100%;
+}
+
+.button {
+ background-color: #71A69B;
+}
+
+footer {
+  text-align: center;
+  font-weight: bold; 
+  background-color: #055769;
+  color: white;
+}
