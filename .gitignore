@@ -38,5 +38,5 @@ server/npm-debug.log
 
 # Hidden Files
 .DS_Store
-client/.DS_Store.
+client/.DS_Store
 server/.DS_Store
