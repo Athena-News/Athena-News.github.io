@@ -21,21 +21,17 @@
       <div class="grid-content shrink" style="padding: 0;">
         <ul class="primary condense menu-bar">
           <li><a><strong class="logo">Athena</strong> Get a Feel for the News</a></li>
-          <li ng-repeat="category in categories"><a><strong class="nav-tabs" ng-click="loadCategory(category)" ng-bind="category">
-            <!-- {{ category }} -->
+          <li ng-repeat="category in categories">
+            <a><strong class="nav-tabs" ng-click="loadCategory(category)" ng-bind="category">
+              <!-- {{ category }} -->
             </strong></a>
-
           </li>
-
         </ul>
       </div>
 
       <div class="grid-content shrink" style="padding: 0;">
-
       </div>
 
-      <!-- <div ui-view class="grid-content"> -->
-    <!--   <div class="grid-block"> -->
       <div class="grid-block">
 
         <div id="main" class="medium-10 grid-block">
@@ -63,41 +59,30 @@
 
         <div class="medium-2 grid-block">
           <div class="sidebar medium-12">
-          <div>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-            </div>
-            <div id="legend">
-              <h4>Legend </h4>
-              <h5>Sentiment</h5>
-              <div id="gradient">
-                <div class="negative">Negative </div>
-                <div class="neutral">Neutral</div>
-                <div class="positive">Positive</div>
-              </div>
-            </div>
-            <div id="visuals">
-              Choose Visualization
-            <div class="buttons">
-            <div ng-repeat="(graphType, func) in graphTypes">
-              <div>
-              <a class="button" ng-click="changeGraphType(graphType)" ng-bind="graphType">
-                <!-- {{ graphType }} -->
-              </a>
-            </div>
-          </div>
+            <div id="sidebar-content">
+              <div id="legend">
+                <h4>Legend </h4>
+                <h5>Sentiment</h5>
+                <div id="gradient">
+                  <div class="negative">Negative </div>
+                  <div class="neutral">Neutral</div>
+                  <div class="positive">Positive</div>
+                </div>
+              </div> <!-- end id="legend" -->
+              <div id="visuals">
+                Choose Visualization
+                <div class="buttons">
+                  <div ng-repeat="(graphType, func) in graphTypes">
+                    <div>
+                      <a class="button" ng-click="changeGraphType(graphType)" ng-bind="graphType">
+                        <!-- {{ graphType }} -->
+                      </a>
+                    </div>
+                  </div>
+                </div> <!-- end class="buttons" -->
+              </div> <!-- end id="visuals" -->
+            </div> <!-- end id="sidebar-content" -->
+          </div> <!-- end class="sidebar medium-12" -->
         </div> <!-- end class="medium-2 grid-block" -->
 
       </div> <!-- end grid-block -->

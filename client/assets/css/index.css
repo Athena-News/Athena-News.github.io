@@ -24,6 +24,12 @@ body {
 
 .sidebar {
   padding: 30px;
+  position: relative;
+}
+
+#sidebar-content {
+  position: absolute;
+  bottom: 0;
 }
 
 .title {
@@ -75,7 +81,7 @@ body {
 
 footer {
   text-align: center;
-  font-weight: bold; 
+  font-weight: bold;
   background-color: #055769;
   color: white;
 }
