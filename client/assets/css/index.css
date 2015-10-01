@@ -22,7 +22,7 @@ body {
   padding: 30px;
 }
 
-#sidebar {
+.sidebar {
   padding: 30px;
 }
 
@@ -35,8 +35,42 @@ body {
   width: 100%;
 }
 
+.negative {
+  padding-left: 105%;
+  padding-bottom: 85%
+}
+
+.neutral {
+  padding-left: 105%;
+  padding-bottom: 90%
+}
+
+.positive {
+  padding-left: 105%;
+}
+
+#legend {
+  padding: 10%;
+}
+
+#gradient {
+  background: -webkit-linear-gradient(#BD0000,#D3F3EE,#009F00); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#BD0000,#D3F3EE,#009F00); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#BD0000,#D3F3EE,#009F00); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#BD0000,#D3F3EE,#009F00); /* Standard syntax */
+  width: 20%;
+  height: 100px;
+  /*#BD0000,#D3F3EE,#009F00*/
+}
+
+.buttons {
+  padding: 10%;
+}
+
 .button {
  background-color: #71A69B;
+ border-radius: 15px;
+ width: 100%;
 }
 
 footer {
