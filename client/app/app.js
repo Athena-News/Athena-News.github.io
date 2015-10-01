@@ -78,7 +78,7 @@ angular.module('Athena', ['firebase'])
   var graphTypes = {
     Pie: createPie,
     'Word Cloud': createWordCloud,
-    'Tree Map': createTreeMap,
+    'Bar Graph': create,
   };
 
   var defaultGraphType = 'Pie';
