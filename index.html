@@ -34,14 +34,14 @@
       <span class="grid-4-5">
 
         <div class="select-article">
-          <span>Select one of today's top articles</span>
-          <form><!-- Might need ng-submit -->
-            <select id="article-dropdown">
-              <option ng-repeat="article in articles" value="{{ $index }}">
-                {{ article.title }}
-              </option>
-            </select>
-          </form>
+          <div>Select one of today's top articles</div>
+
+          <select id="article-dropdown" name="articleSelect" ng-model="selected.ind" ng-change="loadArticle(selected.ind)">
+            <option ng-repeat="article in articles" value="{{ $index }}" ng-selected="$first">
+              {{ article.title }}
+            </option>
+          </select>
+
         </div>
 
         <div class="d3-view" id="animation" style="width:700px;height:250px">
