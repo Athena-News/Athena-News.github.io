@@ -24,6 +24,7 @@
           <li ng-repeat="category in categories"><a><strong class="nav-tabs" ng-click="loadCategory(category)" ng-bind="category">
             <!-- {{ category }} -->
             </strong></a>
+
           </li>
 
         </ul>
@@ -61,14 +62,37 @@
         </div> <!-- end id="main" -->
 
         <div class="medium-2 grid-block">
-          <!-- <div class="keywords">
-          <h3> Keywords </h3>
-          <ul class="side-nav">
-          <li role="menuitem" id="sidebar"  ng-repeat="keyword in selection.article.keywords">{{ keyword.text }}</li>
-          </ul>
-          </div>  -->
-          <div ng-repeat="(graphType, func) in graphTypes">
-            <div>
+          <div class="sidebar medium-12">
+          <div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+            <div id="legend">
+              <h4>Legend </h4>
+              <h5>Sentiment</h5>
+              <div id="gradient">
+                <div class="negative">Negative </div>
+                <div class="neutral">Neutral</div>
+                <div class="positive">Positive</div>
+              </div>
+            </div>
+            <div id="visuals">
+              Choose Visualization
+            <div class="buttons">
+            <div ng-repeat="(graphType, func) in graphTypes">
+              <div>
               <a class="button" ng-click="changeGraphType(graphType)" ng-bind="graphType">
                 <!-- {{ graphType }} -->
               </a>
