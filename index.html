@@ -22,11 +22,10 @@
           <li ng-repeat="category in categories"><a><strong class="nav-tabs" ng-click="loadCategory(category)">
             {{ category }}
             </strong></a>
-          </li>
-          
+          </li> 
         </ul>
       </div>
-      <div class="grid-content shrink" style="padding: 0;">
+    <div class="grid-content shrink" style="padding: 0;">
         
       </div>
 
@@ -58,6 +57,35 @@
             <li role="menuitem" id="sidebar"  ng-repeat="keyword in selection.article.keywords">{{ keyword.text }}</li> 
             </ul> 
             </div>  -->
+          <div class="sidebar medium-12">
+          <div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+            <div id="legend">
+              <h4>Legend </h4>
+              <h5>Sentiment</h5>
+              <div id="gradient">
+                <div class="negative">Negative </div>
+                <div class="neutral">Neutral</div>
+                <div class="positive">Positive</div>
+              </div>
+            </div>
+            <div id="visuals">
+              Choose Visualization
+            <div class="buttons">
             <div ng-repeat="(graphType, func) in graphTypes">
               <div>
               <a class="button" ng-click="changeGraphType(graphType)"> 
@@ -68,6 +96,7 @@
           </div>
         </div>
       </div>
+<!--     </div> -->
   <!--   </div> -->
   <footer>
     Meet the creators of this site
