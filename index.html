@@ -2,76 +2,89 @@
 <html ng-app="Athena">
 
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <link rel='stylesheet' type='css' href='styles.css'> -->
-    <script src="client/lib/d3/d3.js" charset="utf-8"></script>
-    <!-- <script src='client/app/lib/animate.js'></script> -->
+    <title>Athena</title>
+    <link rel='stylesheet' type='css' href='client/app/d3/animationStyles.css'>
+    <link href="client/assets/css/app.css" rel="stylesheet" type="text/css">
+    <link href="client/assets/css/index.css" rel="stylesheet" type="text/css">  
     <script src="client/lib/angular/angular.min.js" charset="utf-8"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
-<!--    <script src="client/app/d3/dummyJSON.js" charset="utf-8"></script>
-    <script src="client/app/d3/pie.js" charset="utf-8"></script>   -->
     <script src="client/app/app.js" charset="utf-8"></script>
-
   </head>
-
   <body ng-controller="AppController">
+    <div class="grid-frame vertical">
+      <div class="grid-content shrink" style="padding: 0;">
+        <ul class="primary condense menu-bar">
+        <li><a><strong class="logo">Athena</strong> Get a Feel for the News</a></li>
+          <li ng-repeat="category in categories"><a><strong class="nav-tabs" ng-click="loadCategory(category)">
+            {{ category }}
+            </strong></a>
+          </li>
+          
+        </ul>
+      </div>
+      <div class="grid-content shrink" style="padding: 0;">
+        
+      </div>
 
-    <div class="header">
-      <span class="site-title grid-1-5">
-        <div><h1>Athena</h1></div>
-        <div><h4>Get a Feel For the News</h4></div>
-      </span><span class="category-tabs grid-4-5">
-        <div class="navigation">
-          <span ng-repeat="category in categories">
-            <span ng-click="loadCategory(category)">{{ category }}</span>
-          </span>
+      <!-- <div ui-view class="grid-content"> -->
+    <!--   <div class="grid-block"> -->
+        <div class="grid-block">
+        
+          <div id="main" class="medium-10 grid-block">
+          <div class="medium-12" >
+            <div class="select-article">
+              <div>Select one of today's top articles</div>
+              <select id="article-dropdown" name="articleSelect" ng-init="selected.ind=0" ng-model="selected.ind" ng-change="loadArticle(selected.ind)">
+                <option ng-repeat="article in articles" value="{{ $index }}" ng-selected="$first">
+                  {{ article.title }}
+                </option>
+              </select>
+              <div class="title">
+                <a href="{{ selection.article.url }}"><h3>{{ selection.article.title }}</h3></a>
+              </div>
+            </div> 
+          <div class="d3-view medium-12"  id="animation" ></div>
         </div>
-      </span>
-    </div>
-
-    <!-- d3-view and sidebar -->
-    <div>
-      <span class="grid-4-5">
-
-        <div class="select-article">
-          <div>Select one of today's top articles</div>
-
-          <select id="article-dropdown" name="articleSelect" ng-init="selected.ind=0" ng-model="selected.ind" ng-change="loadArticle(selected.ind)">
-            <option ng-repeat="article in articles" value="{{ $index }}" ng-selected="$first">
-              {{ article.title }}
-            </option>
-          </select>
-
         </div>
 
-        <!-- Title above graph will link to article url -->
-        <!-- Should center title with CSS -->
-        <div class="title"><a href="{{ selection.article.url }}"><h3>{{ selection.article.title }}</h3></a></div>
-        <div class="d3-view" id="animation" style="width:700px;height:250px">
-          <!-- This is where the d3 image goes -->
-        </div>
-
-      </span><span class="grid-1-5">
-
-        <div class="sidebar">
-          <div ng-repeat="keyword in selection.article.keywords">
-            {{ keyword.text }}
+        <div class="medium-2 grid-block">
+            <!-- <div class="keywords">
+            <h3> Keywords </h3>
+            <ul class="side-nav">
+            <li role="menuitem" id="sidebar"  ng-repeat="keyword in selection.article.keywords">{{ keyword.text }}</li> 
+            </ul> 
+            </div>  -->
+            <div ng-repeat="(graphType, func) in graphTypes">
+              <div>
+              <a class="button" ng-click="changeGraphType(graphType)"> 
+                {{ graphType }}
+              </a>
+              </div>
+            </div>
           </div>
         </div>
-      </span>
-    </div>
-
-    <div class="footer">
-      <span ng-repeat="(graphType, func) in graphTypes">
-        <span ng-click="changeGraphType(graphType)">{{ graphType }}</span>
-      </span>
-    </div>
+      </div>
+  <!--   </div> -->
+  <footer>
+    Meet the creators of this site
+  </footer>
+  </body>
+  
 
 <!--     Script for pie and dummyJSON (must go at end as it needs animation DIV dimensions) -->
-    <link rel='stylesheet' type='css' href='client/app/d3/animationStyles.css'>
-    <script src="client/app/d3/dummyJSON.js" charset="utf-8"></script>
-    <script src="client/app/d3/pie.js" charset="utf-8"></script>
+    
+    <!-- <script src="client/assets/js/foundation.js"></script> -->
+    <script src="client/lib/d3/d3.js" charset="utf-8"></script>
     <script src="client/lib/d3/d3.layout.cloud.js" charset="utf-8"></script>
+
+<!--    <script src="client/app/d3/dummyJSON.js" charset="utf-8"></script>
+    <script src="client/app/d3/pie.js" charset="utf-8"></script>   -->
+    
+    <script src="client/app/d3/pie.js" charset="utf-8"></script>
     <script src="client/app/d3/wordCloud.js" charset="utf-8"></script>
 
   </body>

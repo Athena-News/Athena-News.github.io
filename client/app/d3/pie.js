@@ -1,55 +1,49 @@
 var createPie = function(keywords) {
 
-  var created = false;
-
   d3.select("#animation").selectAll("svg").remove()
 
   // Set pie to sort by sentiment, slice size is relevance
   var pie = d3.layout.pie()
     .sort(function(d, e) { return (d.sentiment.score || 0) - (e.sentiment.score || 0); } )
-    .value(function(d) { return d.relevance; })
+    .value(function(d) { return Math.pow(d.relevance, 2); })
 
 
-  if (!created) {
-    // Set width and height by actual size of animation div
-    var width = document.getElementById('animation').offsetWidth,
-      height = document.getElementById('animation').offsetHeight,
-      radius = Math.min(width, height) / 2;
+  // Set width and height by actual size of animation div
+  var width = document.getElementById('animation').offsetWidth,
+    height = document.getElementById('animation').offsetHeight,
+    radius = Math.min(width, height) / 2;
 
-    // Create SVG element and add 'g' groupings for slices, labels, lines
-    var svg = d3.select("#animation")
-      .append("svg")
-      .append("g")
+  // Create SVG element and add 'g' groupings for slices, labels, lines
+  var svg = d3.select("#animation")
+    .append("svg")
+    .append("g")
 
-    svg.append("g")
-      .attr("class", "slices");
-    svg.append("g")
-      .attr("class", "labels");
-    svg.append("g")
-      .attr("class", "lines");
-
+  svg.append("g")
+    .attr("class", "slices");
+  svg.append("g")
+    .attr("class", "labels");
+  svg.append("g")
+    .attr("class", "lines");
 
 
-    // Set donut size and pointer arc location
-    var arc = d3.svg.arc()
-      .outerRadius(radius * 0.8)
-      .innerRadius(radius * 0.4);
 
-    var outerArc = d3.svg.arc()
-      .innerRadius(radius * 0.9)
-      .outerRadius(radius * 0.9);
+  // Set donut size and pointer arc location
+  var arc = d3.svg.arc()
+    .outerRadius(radius * 0.8)
+    .innerRadius(radius * 0.4);
 
-    // Center svg in div
-    svg.attr("transform", "translate(" + width/2 + "," + height / 2 + ")");
+  var outerArc = d3.svg.arc()
+    .innerRadius(radius * 0.9)
+    .outerRadius(radius * 0.9);
 
-    // Set color to match sentiment, red - silver - green
-    var color = d3.scale.linear()
-      .domain([-1,0,1])
-      .range(["#BD0000","#D3F3EE","#009F00"]);
+  // Center svg in div
+  svg.attr("transform", "translate(" + width/2 + "," + height / 2 + ")");
 
-    //created = true;
+  // Set color to match sentiment, red - silver - green
+  var color = d3.scale.linear()
+    .domain([-1,0,1])
+    .range(["#BD0000","#D3F3EE","#009F00"]);
 
-  }
 
   var svg = d3.select("svg");
 
@@ -61,7 +55,7 @@ var createPie = function(keywords) {
   function create(data) {
     console.log('one pie coming up...  here is data: ');
     console.log(data);
-    data = data.slice(0,8);
+    data = data.slice(0,12);
     // d3.select('svg').remove();
 
     /* ------- PIE SLICES -------*/

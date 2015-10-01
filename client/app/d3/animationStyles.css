@@ -7,10 +7,7 @@ width: 100%;
 position: relative;
 font: 14px sans-serif;
 }
-#animation {
-  height: 100%;
-  width: 100%;
-}
+
 .slices path {
   stroke: #fff;
 }
@@ -26,3 +23,4 @@ polyline{
   stroke-width: 2px;
   fill: none;
 }
+
