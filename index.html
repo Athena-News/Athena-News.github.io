@@ -21,8 +21,8 @@
       <div class="grid-content shrink" style="padding: 0;">
         <ul class="primary condense menu-bar">
           <li><a><strong class="logo">Athena</strong> Get a Feel for the News</a></li>
-          <li ng-repeat="category in categories"><a><strong class="nav-tabs" ng-click="loadCategory(category)">
-            {{ category }}
+          <li ng-repeat="category in categories"><a><strong class="nav-tabs" ng-click="loadCategory(category)" ng-bind="category">
+            <!-- {{ category }} -->
             </strong></a>
           </li>
 
@@ -43,13 +43,13 @@
 
               <div>Select one of today's top articles</div>
               <select id="article-dropdown" name="articleSelect" ng-init="selected.ind=0" ng-model="selected.ind" ng-change="loadArticle(selected.ind)">
-                <option ng-repeat="article in articles" value="{{ $index }}" ng-selected="$first">
-                  {{ article.title }}
+                <option ng-repeat="article in articles" value="{{ $index }}" ng-selected="$first" ng-bind="article.title">
+                  <!-- {{ article.title }} -->
                 </option>
               </select>
 
               <div class="title">
-                <a href="{{ selection.article.url }}"><h3>{{ selection.article.title }}</h3></a>
+                <a href="{{ selection.article.url }}" target="_blank"><h3 ng-bind="selection.article.title"><!-- {{ selection.article.title }} --></h3></a>
               </div>
 
             </div> <!-- end select-article -->
@@ -69,8 +69,8 @@
           </div>  -->
           <div ng-repeat="(graphType, func) in graphTypes">
             <div>
-              <a class="button" ng-click="changeGraphType(graphType)">
-                {{ graphType }}
+              <a class="button" ng-click="changeGraphType(graphType)" ng-bind="graphType">
+                <!-- {{ graphType }} -->
               </a>
             </div>
           </div>
