@@ -26,9 +26,17 @@ dist/
 # Deployed apps should consider commenting these lines out:
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules/
+server/node_modules/
 npm-debug.log
 .sass-cache
+
+# Server files
+server/api_key.txt
+server/keys.js
+server/manifest.yml
+server/npm-debug.log
 
 # Hidden Files
 .DS_Store
 client/.DS_Store.
+server/.DS_Store
