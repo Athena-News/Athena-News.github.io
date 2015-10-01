@@ -36,7 +36,7 @@
         <div class="select-article">
           <div>Select one of today's top articles</div>
 
-          <select id="article-dropdown" name="articleSelect" ng-model="selected.ind" ng-change="loadArticle(selected.ind)">
+          <select id="article-dropdown" name="articleSelect" ng-init="selected.ind=0" ng-model="selected.ind" ng-change="loadArticle(selected.ind)">
             <option ng-repeat="article in articles" value="{{ $index }}" ng-selected="$first">
               {{ article.title }}
             </option>
