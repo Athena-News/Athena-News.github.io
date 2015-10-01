@@ -12,7 +12,6 @@ angular.module('Athena', ['firebase'])
   };
 
   $scope.loadArticle = function(ind) {
-    console.log('loadArticle was run');
     $scope.selection.article = $scope.articles[ind];
     // May not be necessary if already sorted in Firebase
     $scope.selection.article.keywords.sort(function(a, b) {
@@ -23,13 +22,11 @@ angular.module('Athena', ['firebase'])
   };
 
   $scope.changeGraphType = function(graphType) {
-    console.log('changing graph type');
     $scope.selection.graphType = graphType;
     $scope.render();
   };
 
   $scope.loadCategory = function(category) {
-    console.log(category);
     $scope.selection.category = category;
     $scope.articles = $scope.data[category];
     $scope.loadArticle(0);
@@ -52,7 +49,6 @@ angular.module('Athena', ['firebase'])
 .factory('Data', function($firebaseObject) {
 
   var getData = function() {
-    console.log('getData has run');
 
     var firebaseUrl = 'https://boiling-inferno-1345.firebaseio.com/';
 
@@ -60,7 +56,6 @@ angular.module('Athena', ['firebase'])
     return $firebaseObject(new Firebase(firebaseUrl))
       .$loaded()
       .then(function(data) {
-        console.log(data);
         return data;
       });
 
