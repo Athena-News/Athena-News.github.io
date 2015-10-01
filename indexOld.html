@@ -2,13 +2,16 @@
 <html ng-app="Athena">
 
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <link rel='stylesheet' type='css' href='styles.css'> -->
-    <title>Athena</title>
-    <link rel='stylesheet' type='css' href='client/app/d3/animationStyles.css'>
-    <link href="client/assets/css/app.css" rel="stylesheet" type="text/css">
-    <link href="client/assets/css/index.css" rel="stylesheet" type="text/css">
+    <script src="client/lib/d3/d3.js" charset="utf-8"></script>
+    <!-- <script src='client/app/lib/animate.js'></script> -->
+    <script src="client/lib/angular/angular.min.js" charset="utf-8"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+<!--    <script src="client/app/d3/dummyJSON.js" charset="utf-8"></script>
+    <script src="client/app/d3/pie.js" charset="utf-8"></script>   -->
+    <script src="client/app/app.js" charset="utf-8"></script>
+
   </head>
 
   <body ng-controller="AppController">
@@ -52,7 +55,7 @@
 
         <div class="sidebar">
           <div ng-repeat="keyword in selection.article.keywords">
-            <ul>{{ keyword.text }}</ul>
+            {{ keyword.text }}
           </div>
         </div>
       </span>
@@ -65,17 +68,10 @@
     </div>
 
 <!--     Script for pie and dummyJSON (must go at end as it needs animation DIV dimensions) -->
-    <script src="client/lib/angular/angular.min.js" charset="utf-8"></script>
-    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
-    <script src="client/assets/js/foundation.js"></script>
-    <script src="client/lib/d3/d3.js" charset="utf-8"></script>
-    <script src="client/lib/d3/d3.layout.cloud.js" charset="utf-8"></script>
-
-<!--    <script src="client/app/d3/dummyJSON.js" charset="utf-8"></script>
-    <script src="client/app/d3/pie.js" charset="utf-8"></script>   -->
-    <script src="client/app/app.js" charset="utf-8"></script>
+    <link rel='stylesheet' type='css' href='client/app/d3/animationStyles.css'>
+    <script src="client/app/d3/dummyJSON.js" charset="utf-8"></script>
     <script src="client/app/d3/pie.js" charset="utf-8"></script>
+    <script src="client/lib/d3/d3.layout.cloud.js" charset="utf-8"></script>
     <script src="client/app/d3/wordCloud.js" charset="utf-8"></script>
 
   </body>

@@ -8,84 +8,95 @@
     <title>Athena</title>
     <link rel='stylesheet' type='css' href='client/app/d3/animationStyles.css'>
     <link href="client/assets/css/app.css" rel="stylesheet" type="text/css">
-    <link href="client/assets/css/index.css" rel="stylesheet" type="text/css">  
+    <link href="client/assets/css/index.css" rel="stylesheet" type="text/css">
     <script src="client/lib/angular/angular.min.js" charset="utf-8"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
     <script src="client/app/app.js" charset="utf-8"></script>
   </head>
+
   <body ng-controller="AppController">
     <div class="grid-frame vertical">
+
       <div class="grid-content shrink" style="padding: 0;">
         <ul class="primary condense menu-bar">
-        <li><a><strong class="logo">Athena</strong> Get a Feel for the News</a></li>
+          <li><a><strong class="logo">Athena</strong> Get a Feel for the News</a></li>
           <li ng-repeat="category in categories"><a><strong class="nav-tabs" ng-click="loadCategory(category)">
             {{ category }}
             </strong></a>
           </li>
-          
+
         </ul>
       </div>
+
       <div class="grid-content shrink" style="padding: 0;">
-        
+
       </div>
 
       <!-- <div ui-view class="grid-content"> -->
     <!--   <div class="grid-block"> -->
-        <div class="grid-block">
-        
-          <div id="main" class="medium-10 grid-block">
+      <div class="grid-block">
+
+        <div id="main" class="medium-10 grid-block">
           <div class="medium-12" >
             <div class="select-article">
+
               <div>Select one of today's top articles</div>
               <select id="article-dropdown" name="articleSelect" ng-init="selected.ind=0" ng-model="selected.ind" ng-change="loadArticle(selected.ind)">
                 <option ng-repeat="article in articles" value="{{ $index }}" ng-selected="$first">
                   {{ article.title }}
                 </option>
               </select>
+
               <div class="title">
                 <a href="{{ selection.article.url }}"><h3>{{ selection.article.title }}</h3></a>
               </div>
-            </div> 
-          <div class="d3-view medium-12"  id="animation" ></div>
-        </div>
-        </div>
+
+            </div> <!-- end select-article -->
+
+            <!-- D3 animation gets ended in this div -->
+            <div class="d3-view medium-12"  id="animation" ></div>
+
+          </div>
+        </div> <!-- end id="main" -->
 
         <div class="medium-2 grid-block">
-            <!-- <div class="keywords">
-            <h3> Keywords </h3>
-            <ul class="side-nav">
-            <li role="menuitem" id="sidebar"  ng-repeat="keyword in selection.article.keywords">{{ keyword.text }}</li> 
-            </ul> 
-            </div>  -->
-            <div ng-repeat="(graphType, func) in graphTypes">
-              <div>
-              <a class="button" ng-click="changeGraphType(graphType)"> 
+          <!-- <div class="keywords">
+          <h3> Keywords </h3>
+          <ul class="side-nav">
+          <li role="menuitem" id="sidebar"  ng-repeat="keyword in selection.article.keywords">{{ keyword.text }}</li>
+          </ul>
+          </div>  -->
+          <div ng-repeat="(graphType, func) in graphTypes">
+            <div>
+              <a class="button" ng-click="changeGraphType(graphType)">
                 {{ graphType }}
               </a>
-              </div>
             </div>
           </div>
-        </div>
-      </div>
-  <!--   </div> -->
-  <footer>
-    Meet the creators of this site
-  </footer>
+        </div> <!-- end class="medium-2 grid-block" -->
+
+      </div> <!-- end grid-block -->
+
+    </div> <!-- end class="grid-frame vertical" -->
+
+    <footer>
+      Meet the creators of this site
+    </footer>
   </body>
-  
+
 
 <!--     Script for pie and dummyJSON (must go at end as it needs animation DIV dimensions) -->
-    
-    <!-- <script src="client/assets/js/foundation.js"></script> -->
-    <script src="client/lib/d3/d3.js" charset="utf-8"></script>
-    <script src="client/lib/d3/d3.layout.cloud.js" charset="utf-8"></script>
+
+  <!-- <script src="client/assets/js/foundation.js"></script> -->
+  <script src="client/lib/d3/d3.js" charset="utf-8"></script>
+  <script src="client/lib/d3/d3.layout.cloud.js" charset="utf-8"></script>
 
 <!--    <script src="client/app/d3/dummyJSON.js" charset="utf-8"></script>
-    <script src="client/app/d3/pie.js" charset="utf-8"></script>   -->
-    
-    <script src="client/app/d3/pie.js" charset="utf-8"></script>
-    <script src="client/app/d3/wordCloud.js" charset="utf-8"></script>
+  <script src="client/app/d3/pie.js" charset="utf-8"></script>   -->
 
-  </body>
+  <script src="client/app/d3/pie.js" charset="utf-8"></script>
+  <script src="client/app/d3/wordCloud.js" charset="utf-8"></script>
+
+  <!-- </body> --> <!-- already closed the body above -->
 </html>
