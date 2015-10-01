@@ -5,10 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <link rel='stylesheet' type='css' href='styles.css'> -->
+<<<<<<< HEAD
     <title>Athena</title>
     <link rel='stylesheet' type='css' href='client/app/d3/animationStyles.css'>
     <link href="client/assets/css/app.css" rel="stylesheet" type="text/css">
     <link href="client/assets/css/index.css" rel="stylesheet" type="text/css">
+=======
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="client/lib/d3/d3.js" charset="utf-8"></script>
+    <!-- <script src='client/app/lib/animate.js'></script> -->
+>>>>>>> (feat) implement treemap
     <script src="client/lib/angular/angular.min.js" charset="utf-8"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
@@ -58,6 +64,47 @@
             <!-- D3 animation gets ended in this div -->
             <div class="d3-view medium-12"  id="animation" ></div>
 
+    <div class="header">
+      <span class="site-title grid-1-5">
+        <div><h1>Athena</h1></div>
+        <div><h4>Get a Feel For the News</h4></div>
+      </span>
+      <span class="category-tabs grid-4-5">
+        <div class="nav nav-tabs navigation">
+          <ul ng-repeat="category in categories">
+            <li ng-click="loadCategory(category)">{{ category }}</li>
+          </ul>
+        </div>
+      </span>
+    </div>
+
+    <!-- d3-view and sidebar -->
+    <div>
+      <span class="grid-4-5">
+
+        <div class="select-article">
+          <div>Select one of today's top articles</div>
+
+          <select id="article-dropdown" name="articleSelect" ng-init="selected.ind=0" ng-model="selected.ind" ng-change="loadArticle(selected.ind)">
+            <option ng-repeat="article in articles" value="{{ $index }}" ng-selected="$first">
+              {{ article.title }}
+            </option>
+          </select>
+
+        </div>
+
+        <!-- Title above graph will link to article url -->
+        <!-- Should center title with CSS -->
+        <div class="title"><a href="{{ selection.article.url }}"><h3>{{ selection.article.title }}</h3></a></div>
+        <div class="d3-view" id="animation" style="width:700px;height:250px">
+          <!-- This is where the d3 image goes -->
+        </div>
+
+      </span><span class="grid-1-5">
+
+        <div class="sidebar">
+          <div ng-repeat="keyword in selection.article.keywords">
+            {{ keyword.text }}
           </div>
         </div> <!-- end id="main" -->
 
@@ -100,6 +147,7 @@
           </div>
         </div> <!-- end class="medium-2 grid-block" -->
 
+
       </div> <!-- end grid-block -->
 
     </div> <!-- end class="grid-frame vertical" -->
@@ -107,6 +155,14 @@
     <footer>
       Meet the creators of this site
     </footer>
+
+<!--     Script for pie and dummyJSON (must go at end as it needs animation DIV dimensions) -->
+    <link rel='stylesheet' type='css' href='client/app/d3/animationStyles.css'>
+    <script src="client/app/d3/dummyJSON.js" charset="utf-8"></script>
+    <script src="client/app/d3/pie.js" charset="utf-8"></script>
+    <script src="client/app/d3/treemap.js" charset="utf-8"></script>
+    <script src="client/lib/d3/d3.layout.cloud.js" charset="utf-8"></script>
+    <script src="client/app/d3/wordCloud.js" charset="utf-8"></script>
   </body>
 
 
