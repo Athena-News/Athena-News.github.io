@@ -1,5 +1,5 @@
 {
-  "name": "Athena News Server",
+  "name": "athena-news-server",
   "version": "0.1.0",
   "description": "Back-end service for Athena News",
   "scripts": {
@@ -8,10 +8,13 @@
   "dependencies": {
     "cfenv": "1.0.x",
     "express": "4.12.x",
-    "firebase": "^2.3.0",
+    "firebase": "^2.3.0"
   },
   "repository": {},
   "engines": {
     "node": "0.12.x"
+  },
+  "devDependencies": {
+    "firebase-queue": "^1.2.1"
   }
 }
