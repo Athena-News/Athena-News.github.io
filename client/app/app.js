@@ -75,13 +75,16 @@ angular.module('Athena', ['firebase'])
     console.log(keywords);
   };
 
+  // originally we called the first graph "Pie" but
+  // then decided to rename to "Donut" and chose not
+  // to rename the D3 files nor the functions in them
   var graphTypes = {
-    Pie: createPie,
+    Donut: createPie,
     'Word Cloud': createWordCloud,
     'Tree Map': createTreeMap,
   };
 
-  var defaultGraphType = 'Pie';
+  var defaultGraphType = 'Donut';
 
   var newsCategories = [
     'Top News',
