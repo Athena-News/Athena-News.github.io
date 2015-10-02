@@ -1,6 +1,7 @@
 var createPie = function(keywords) {
 
-  d3.select("#animation").selectAll("svg").remove()
+  d3.select("#animation").selectAll("svg").remove();
+  d3.select("#animation").selectAll("div").remove();
 
   // Set pie to sort by sentiment, slice size is relevance
   var pie = d3.layout.pie()

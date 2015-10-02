@@ -11,6 +11,7 @@ var createWordCloud = function (keywords) {
     .range(["#BD0000","#D3F3EE","#009F00"]);
 
   d3.select("#animation").selectAll("svg").remove();
+  d3.select("#animation").selectAll("div").remove();
 
   // set word cloud rotaton, size, width
   d3.layout.cloud()
