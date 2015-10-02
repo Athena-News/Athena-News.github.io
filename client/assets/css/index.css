@@ -39,7 +39,7 @@ body, #article-dropdown {
   padding: 10%;
 }
 
-.title {
+.title, .copyright, .technologies {
   text-align: center;
 }
 
@@ -57,9 +57,6 @@ body, #article-dropdown {
   padding-left: 105%;
 }
 
-#legend {
-  padding: 10%;
-}
 
 #gradient {
   background: -webkit-linear-gradient(#BD0000,#D3F3EE,#009F00); /* For Safari 5.1 to 6.0 */
@@ -74,11 +71,7 @@ body, #article-dropdown {
   padding-top: 10%;
 }
 
-#visuals {
-  padding: 10%;
-}
-
-.buttons {
+#legend, #visuals, .buttons {
   padding: 10%;
 }
 
@@ -89,12 +82,32 @@ body, #article-dropdown {
 }
 
 footer {
-  text-align: center;
   font-weight: bold;
   /*background-color: #71A69B;*/
   background-color: #055769;
   color: white;
+  padding: 1%;
 }
+
+.creators {
+  padding-left: 10px;
+  text-align: center;
+}
+
+.meet-us, .creators a {
+  color: white;
+}
+
+.site-details {
+  width: 100%;
+  height: 250px;
+}
+
+.site-details img {
+  height: 100px;
+  padding-left: 5px;
+}
+
 
 /*  CSS for visualizations  */
 svg {
@@ -125,6 +138,7 @@ polyline{
   position: absolute;
   text-indent: 2px;
 }
+
 
 
 
