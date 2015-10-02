@@ -1,5 +1,6 @@
 var createPie = function(keywords) {
 
+  // Remove previous D3 animation from #animation div
   d3.select("#animation").selectAll("svg").remove();
   d3.select("#animation").selectAll("div").remove();
 
@@ -26,8 +27,6 @@ var createPie = function(keywords) {
   svg.append("g")
     .attr("class", "lines");
 
-
-
   // Set donut size and pointer arc location
   var arc = d3.svg.arc()
     .outerRadius(radius * 0.8)
@@ -48,7 +47,8 @@ var createPie = function(keywords) {
 
   var svg = d3.select("svg");
 
-  // Invoke create function
+  // Invoke create function, we create with empty array first as
+  // we want the new data to have correct labels and colors
   create([]);
   create(keywords);
 
@@ -57,7 +57,6 @@ var createPie = function(keywords) {
     console.log('one pie coming up...  here is data: ');
     console.log(data);
     data = data.slice(0,12);
-    // d3.select('svg').remove();
 
     /* ------- PIE SLICES -------*/
     var slice = svg.select(".slices").selectAll("path.slice")
