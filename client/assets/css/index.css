@@ -1,25 +1,27 @@
 .logo {
   font-family: 'Dancing Script', cursive;
   font-size: 40px;
-  /* color: #FECF00;*/
-  /*color: #055769;*/
   color: white;
 
 }
 
-body {
+body, #article-dropdown {
   background-color: #FFFFF3;
 }
-/*#71A69B*/
+
 .nav-tabs {
   font-size: 45px;
- /* color: #FECF00;*/
-  /*color: #055769;*/
   color: white;
 }
 
 #main {
   padding: 30px;
+}
+
+
+#animation {
+  height: 500px;
+  width: 100%;
 }
 
 .sidebar {
@@ -32,23 +34,23 @@ body {
   bottom: 0;
 }
 
+#news-link {
+  font-size: 15px;
+  padding: 10%;
+}
+
 .title {
   text-align: center;
 }
 
-#animation {
-  height: 500px;
-  width: 100%;
-}
-
 .negative {
   padding-left: 105%;
-  padding-bottom: 85%
+  padding-bottom: 90%
 }
 
 .neutral {
   padding-left: 105%;
-  padding-bottom: 90%
+  padding-bottom: 80%
 }
 
 .positive {
@@ -66,7 +68,14 @@ body {
   background: linear-gradient(#BD0000,#D3F3EE,#009F00); /* Standard syntax */
   width: 20%;
   height: 100px;
-  /*#BD0000,#D3F3EE,#009F00*/
+}
+
+#relevance {
+  padding-top: 10%;
+}
+
+#visuals {
+  padding: 10%;
 }
 
 .buttons {
@@ -75,18 +84,47 @@ body {
 
 .button {
  background-color: #71A69B;
- border-radius: 15px;
+ border-radius: 10px;
  width: 100%;
 }
 
 footer {
   text-align: center;
   font-weight: bold;
+  /*background-color: #71A69B;*/
   background-color: #055769;
   color: white;
 }
 
+/*  CSS for visualizations  */
 svg {
   width: 100%;
   height: 100%;
 }
+
+#wordcloud {
+  font-family: Impact, Haettenschweiler, 'Franklin Gothic Bold', Charcoal, 'Helvetica Inserat', 'Bitstream Vera Sans Bold', 'Arial Black', 'sans serif';
+}
+
+.slices path {
+  stroke: #fff;
+}
+
+polyline{
+  opacity: .3;
+  stroke: black;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.node {
+  border: solid 1px white;
+  font: 14px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+
+
+
