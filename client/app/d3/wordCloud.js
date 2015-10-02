@@ -4,6 +4,7 @@ var createWordCloud = function (keywords) {
   // set width and height by actual size of animation div
   var width = document.getElementById('animation').offsetWidth;
   var height = document.getElementById('animation').offsetHeight;
+  keywords = keywords.slice(0, 30);
 
   // set color scale from -1 to 1 (this will scale with sentiment.score)
   var color = d3.scale.linear()
@@ -21,6 +22,7 @@ var createWordCloud = function (keywords) {
     .text(function(d) { return d.text; })
     .rotate(function() { return ~~(Math.random() * 2) * 90; }) //sets rotaton angle to 0 or 90
     .fontSize(function(d) { return d.relevance * 50 ; }) // formula used to increase font size
+    .font("Impact")
     .on("end", draw)
     .start();
 
@@ -38,7 +40,6 @@ var createWordCloud = function (keywords) {
     .data(words)
     .enter().append("text")
     .style("font-size", function(d) { return d.size; })
-    .style("font-family", "Impact")
     .style("fill", function(d) { //change color gradient to match sentiment value
       if(d.sentiment.score) {
         return color(d.sentiment.score);

@@ -34,12 +34,10 @@
       </div>
 
       <div class="grid-block">
-
         <div id="main" class="medium-10 grid-block">
           <div class="medium-12" >
             <div class="select-article">
-
-              <div>Select one of today's top articles</div>
+              <div><strong>Select one of today's top articles</strong></div>
               <select id="article-dropdown" name="articleSelect" ng-init="selected.ind=0" ng-model="selected.ind" ng-change="loadArticle(selected.ind)">
                 <option ng-repeat="article in articles" value="{{ $index }}" ng-selected="$first" ng-bind="article.title">
                   <!-- {{ article.title }} -->
@@ -47,31 +45,40 @@
               </select>
 
               <div class="title">
-                <a href="{{ selection.article.url }}" target="_blank"><h3 ng-bind="selection.article.title"><!-- {{ selection.article.title }} --></h3></a>
+                <a href="{{ selection.article.url }}" target="_blank"><strong><h3 ng-bind="selection.article.title"><!-- {{ selection.article.title }} --></h3></strong></a>
               </div>
 
             </div> <!-- end select-article -->
 
             <!-- D3 animation gets ended in this div -->
             <div class="d3-view medium-12"  id="animation" ></div>
-
           </div>
         </div> <!-- end id="main" -->
 
         <div class="medium-2 grid-block">
           <div class="sidebar medium-12">
             <div id="sidebar-content">
+              <div id="news-link">
+                <strong>NY Times Full Story:</strong> 
+                <div>
+                  <a href="{{ selection.article.url }}" target="_blank"><strong ng-bind="selection.article.title"><!-- {{ selection.article.title }} -->></strong></a>
+                </div> 
+              </div> <!-- end id="news-lnk" -->
               <div id="legend">
-                <h4>Legend </h4>
-                <h5>Sentiment</h5>
+                <h5><b>Legend</b></h5>
+                <h6><strong>Sentiment</strong></h6>
                 <div id="gradient">
-                  <div class="negative">Negative </div>
+                  <div class="negative">Negative</div>
                   <div class="neutral">Neutral</div>
                   <div class="positive">Positive</div>
-                </div>
+                </div> <!-- end id="gradient" -->
+                <div id="relevance">
+                  <h6><strong>Relevance</strong></h6>
+                  Size is indicative of relevance
+                </div> <!-- end id="relevance" -->
               </div> <!-- end id="legend" -->
               <div id="visuals">
-                Choose Visualization
+                <strong>Choose Visualization</strong>
                 <div class="buttons">
                   <div ng-repeat="(graphType, func) in graphTypes">
                     <div>
@@ -92,6 +99,10 @@
 
     <footer>
       Meet the creators of this site
+      <p>Joyce: </p>
+      <p>Rod: </p>
+      <p>Taylor: </p>
+      <p>Tisha: </p> 
     </footer>
   </body>
 
