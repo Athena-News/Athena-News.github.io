@@ -1,6 +1,6 @@
 .logo {
   font-family: 'Dancing Script', cursive;
-  font-size: 40px;
+  font-size: 30px;
   color: white;
 
 }
@@ -10,8 +10,17 @@ body, #article-dropdown {
 }
 
 .nav-tabs {
-  font-size: 45px;
+  font-size: 28px;
   color: white;
+}
+
+.menu-bar {
+  height: 70px;
+}
+
+.menu-bar li,
+.menu-bar li a {
+  height: 100%;
 }
 
 #main {

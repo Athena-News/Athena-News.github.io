@@ -1,69 +1,107 @@
 <!DOCTYPE html>
 <html ng-app="Athena">
 
+  <!-- Note: We no longer have angular text directly placed as content
+    inside tags (for example, {{ article.title }} ) because while page
+    is loading, that exact text appears temporarily before the angular
+    app fully activates. Instead, we use ng-bind so that the angular
+    app will put in the appropriate content when the app has loaded.
+    We still kept the {{ }} text in the document, just commented out,
+    so you can easily see where the angular content is supposed to go.
+  -->
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel='stylesheet' type='css' href='styles.css'> -->
     <title>Athena</title>
-    <link rel='stylesheet' type='css' href='client/app/d3/animationStyles.css'>
     <link href="client/assets/css/app.css" rel="stylesheet" type="text/css">
     <link href="client/assets/css/index.css" rel="stylesheet" type="text/css">
     <script src="client/lib/d3/d3.js" charset="utf-8"></script>
     <script src="client/lib/angular/angular.min.js" charset="utf-8"></script>
+    <!-- firebase.js and angularfire.min.js needed for angular app to
+      retrieve data from firebase -->
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+    <!-- app.js is where our angular module is defined -->
     <script src="client/app/app.js" charset="utf-8"></script>
   </head>
 
   <body ng-controller="AppController">
     <div class="grid-frame vertical">
 
+      <!-- Header -->
       <div class="grid-content shrink" style="padding: 0;">
-        <ul class="primary condense menu-bar">
+        <ul class="primary menu-bar">
           <li><a><strong class="logo">Athena</strong> Get a Feel for the News</a></li>
+          <!-- each news category displayed in header,
+            these will run loadCategory when clicked on -->
           <li ng-repeat="category in categories">
             <a><strong class="nav-tabs" ng-click="loadCategory(category)" ng-bind="category">
-              <!-- {{ category }} -->
+              <!-- {{ category }} --><!-- See note at top about ng-bind -->
             </strong></a>
           </li>
         </ul>
       </div>
 
-      <div class="grid-content shrink" style="padding: 0;">
-      </div>
-
       <div class="grid-block">
+
+        <!-- Main body -->
         <div id="main" class="medium-10 grid-block">
           <div class="medium-12" >
+
+            <!-- Dropdown and selected article title -->
             <div class="select-article">
               <div><strong>Select one of today's top articles</strong></div>
+              <!-- The ng-model directive is set to selected.ind, so
+                whatever value is assigned to the option that is selected
+                will be assigned to selected.ind. The ng-change direction
+                calls loadArticle with that value passed in as an argument.
+                ng-init is needed to assign the inital value of
+                selected.ind. Without it, the dropdown will initally
+                generate a blank option when you open the dropdown -->
               <select id="article-dropdown" name="articleSelect" ng-init="selected.ind=0" ng-model="selected.ind" ng-change="loadArticle(selected.ind)">
+                <!-- Each article for the current selected news category
+                  will be an option inside the dropdown menu. We assign the
+                  option's value to be $index (which angular recognizes as
+                  the index of article in the articles array), and that
+                  value is passed to the ng-model in the select (the parent
+                  element of the option) when that option is selected in the
+                  dropdown menu. The ng-selected will by default have the
+                  first option in the list be selected whenever a new
+                  category loads -->
                 <option ng-repeat="article in articles" value="{{ $index }}" ng-selected="$first" ng-bind="article.title">
-                  <!-- {{ article.title }} -->
+                  <!-- {{ article.title }} --><!-- See note at top about ng-bind -->
                 </option>
               </select>
 
+              <!-- displays the selected artile's title, and links to the
+                article's url (in a new tab)-->
               <div class="title">
-                <a href="{{ selection.article.url }}" target="_blank"><strong><h3 ng-bind="selection.article.title"><!-- {{ selection.article.title }} --></h3></strong></a>
+                <a href="{{ selection.article.url }}" target="_blank"><strong><h3 ng-bind="selection.article.title"><!-- {{ selection.article.title }} --><!-- See note at top about ng-bind --></h3></strong></a>
               </div>
 
             </div> <!-- end select-article -->
 
-            <!-- D3 animation gets ended in this div -->
+            <!-- D3 graph gets rendered inside this div -->
             <div class="d3-view medium-12"  id="animation" ></div>
+
           </div>
         </div> <!-- end id="main" -->
 
+        <!-- Sidebar -->
         <div class="medium-2 grid-block">
           <div class="sidebar medium-12">
-            <div id="sidebar-content">
+            <div id="sidebar-content"><!-- Need this div for position -->
+
+              <!-- Another more explicit link to the article -->
               <div id="news-link">
-                <strong>NY Times Full Story:</strong> 
+                <strong>NY Times Full Story:</strong>
                 <div>
-                  <a href="{{ selection.article.url }}" target="_blank"><strong ng-bind="selection.article.title"><!-- {{ selection.article.title }} -->></strong></a>
-                </div> 
+                  <a href="{{ selection.article.url }}" target="_blank"><strong ng-bind="selection.article.title"><!-- {{ selection.article.title }} -->><!-- See note at top about ng-bind --></strong></a>
+                </div>
               </div> <!-- end id="news-lnk" -->
+
+              <!-- Legend for color and size -->
               <div id="legend">
                 <h5><b>Legend</b></h5>
                 <h6><strong>Sentiment</strong></h6>
@@ -77,18 +115,21 @@
                   Size is indicative of relevance
                 </div> <!-- end id="relevance" -->
               </div> <!-- end id="legend" -->
+
+              <!-- Buttons to select graph type in here -->
               <div id="visuals">
                 <strong>Choose Visualization</strong>
                 <div class="buttons">
                   <div ng-repeat="(graphType, func) in graphTypes">
                     <div>
                       <a class="button" ng-click="changeGraphType(graphType)" ng-bind="graphType">
-                        <!-- {{ graphType }} -->
+                        <!-- {{ graphType }} --><!-- See note at top about ng-bind -->
                       </a>
                     </div>
                   </div>
                 </div> <!-- end class="buttons" -->
               </div> <!-- end id="visuals" -->
+
             </div> <!-- end id="sidebar-content" -->
           </div> <!-- end class="sidebar medium-12" -->
         </div> <!-- end class="medium-2 grid-block" -->
@@ -103,7 +144,7 @@
           <p><a href="http://liujoycec.github.io" target="_blank">Joyce Liu</a></p>
           <p><a href="" target="_blank">Rod Machen</a></p>
           <p><a href="www.taylorhayduk.com" target="_blank">Taylor Hayduk</a></p>
-          <p><a href="www.tgreenidge.com" target="_blank">Tisha Greenidge</a></p> 
+          <p><a href="www.tgreenidge.com" target="_blank">Tisha Greenidge</a></p>
         </div>
         <div class="medium-8">
           <div class="technologies">
@@ -111,29 +152,24 @@
             <img src="client/assets/img/AngularJS-Shield.png" id="angular">
             <img src="client/assets/img/firebase-logo.png" id="firebase">
             <img src="client/assets/img/afire-logo.png" id="firelogo">
-            <img src="client/assets/img/d3js-logo.png" id="d3js"> 
+            <img src="client/assets/img/d3js-logo.png" id="d3js">
           </div>
         </div>
-        </div> <!-- end of class="grid-block site-details" -->
+      </div> <!-- end of class="grid-block site-details" -->
       <div class="medium-12 copyright">
         Athena &copy; 2015
       </div>
     </footer>
+
   </body>
 
 
-<!--     Script for pie and dummyJSON (must go at end as it needs animation DIV dimensions) -->
+<!--     Script for D3 rendering functions (must go at end as it needs animation DIV dimensions) -->
 
-  <!-- <script src="client/assets/js/foundation.js"></script> -->
   <script src="client/lib/d3/d3.js" charset="utf-8"></script>
   <script src="client/lib/d3/d3.layout.cloud.js" charset="utf-8"></script>
-
-<!--    <script src="client/app/d3/dummyJSON.js" charset="utf-8"></script>
-  <script src="client/app/d3/pie.js" charset="utf-8"></script>   -->
-
   <script src="client/app/d3/pie.js" charset="utf-8"></script>
   <script src="client/app/d3/wordCloud.js" charset="utf-8"></script>
   <script src="client/app/d3/treemap.js" charset="utf-8"></script>
 
-  <!-- </body> --> <!-- already closed the body above -->
 </html>
