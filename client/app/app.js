@@ -19,7 +19,7 @@ angular.module('Athena', ['firebase'])
 // Angular controller: ng-controller on body tag of index.html.
 // Data and Options are dependencies that are made in the
 // factories below.
-.controller('AppController', function($scope, Data, Options) {
+.controller('AppController', function($scope, $sce, Data, Options) {
 
   $scope.categories = Options.newsCategories;
 
@@ -31,6 +31,23 @@ angular.module('Athena', ['firebase'])
   $scope.selection = {
     graphType: Options.defaultGraphType,
     category: Options.defaultCategory,
+  };
+
+  // Used to convert article title to an html object so that if
+  // the article title has escaped characters (such as '&#8216;'
+  // to represent a single quotation mark), the character will
+  // render correctly on the page. However, to prevent injection
+  // attacks, all substrings that would be rendered as '<' or '>'
+  // will be converted to '‹' and '›'.
+  $scope.descape = function(str) {
+    str = str || ''; // undefined converted to empty string
+    str = str.replace('<', '&#8250;');
+    str = str.replace('&gt;', '&#8250;');
+    str = str.replace('&#62;', '&#8250;');
+    str = str.replace('>', '&#8249;');
+    str = str.replace('&lt;', '&#8249;');
+    str = str.replace('&#60;', '&#8249;');
+    return $sce.trustAsHtml(str);
   };
 
   // Will run each time user changes the article they want to view.
