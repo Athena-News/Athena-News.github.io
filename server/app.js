@@ -11,7 +11,4 @@ app.listen(appEnv.port, function() {
 });
 
 fetch();
-setInterval(inc, 14400000);
 setInterval(fetch, 14400000);
-
-// console.log(count);
