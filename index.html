@@ -8,6 +8,9 @@
     app will put in the appropriate content when the app has loaded.
     We still kept the {{ }} text in the document, just commented out,
     so you can easily see where the angular content is supposed to go.
+    For article titles, we use ng-bind-html to bind the html object
+    that is returned out of the descape function so that escaped
+    characters will render correctly on the page.
   -->
 
   <head>
@@ -32,7 +35,7 @@
       <!-- Header -->
       <div class="grid-content shrink" style="padding: 0;">
         <ul class="primary menu-bar">
-          <li><a><strong class="logo">Athena</strong> Get a Feel for the News</a></li>
+          <li><a><strong class="logo">Athena</strong>Get a Feel for the News</a></li>
           <!-- each news category displayed in header,
             these will run loadCategory when clicked on -->
           <li ng-repeat="category in categories">
@@ -69,7 +72,7 @@
                   dropdown menu. The ng-selected will by default have the
                   first option in the list be selected whenever a new
                   category loads -->
-                <option ng-repeat="article in articles" value="{{ $index }}" ng-selected="$first" ng-bind="article.title">
+                <option ng-repeat="article in articles" value="{{ $index }}" ng-selected="$first" ng-bind-html="descape(article.title)">
                   <!-- {{ article.title }} --><!-- See note at top about ng-bind -->
                 </option>
               </select>
@@ -77,7 +80,7 @@
               <!-- displays the selected artile's title, and links to the
                 article's url (in a new tab)-->
               <div class="title">
-                <a href="{{ selection.article.url }}" target="_blank"><strong><h3 ng-bind="selection.article.title"><!-- {{ selection.article.title }} --><!-- See note at top about ng-bind --></h3></strong></a>
+                <a href="{{ selection.article.url }}" target="_blank"><strong><h3 ng-bind-html="descape(selection.article.title)"><!-- {{ selection.article.title }} --><!-- See note at top about ng-bind --></h3></strong></a>
               </div>
 
             </div> <!-- end select-article -->
@@ -95,10 +98,8 @@
 
               <!-- Another more explicit link to the article -->
               <div id="news-link">
-                <!-- <strong>NY Times Full Story:</strong> -->
                 <div>
                   <a href="{{ selection.article.url }}" target="_blank">
-                    <!-- <strong ng-bind="selection.article.title">{{ selection.article.title }}</strong> -->
                     <strong>Click here for the full story on NY Times</strong>
                   </a>
                 </div>
