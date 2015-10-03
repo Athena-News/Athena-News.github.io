@@ -38,11 +38,6 @@ body, #article-dropdown {
   position: relative;
 }
 
-#sidebar-content {
-  position: absolute;
-  bottom: 0;
-}
-
 #news-link {
   font-size: 15px;
   padding: 10%;
