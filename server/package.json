@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Back-end service for Athena News",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "cfenv": "1.0.x",
@@ -15,6 +15,7 @@
     "node": "0.12.x"
   },
   "devDependencies": {
-    "firebase-queue": "^1.2.1"
+    "firebase-queue": "^1.2.1",
+    "request": "^2.64.0"
   }
 }
