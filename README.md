@@ -41,6 +41,12 @@ npm install
 bower install
 ```
 
+From within the server directory:
+
+```sh
+npm install
+```
+
 ### Roadmap
 
 View the project roadmap [here](https://github.com/HRR8-Athena/HRR8-Athena/issues)
