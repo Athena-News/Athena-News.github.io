@@ -11,89 +11,35 @@ var firebase = new Firebase(keys.firebase);
 module.exports = function() {
   firebase.remove();
 
-  request('http://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/1?' + keys.nytimes, function(error, response, body) {
-    if (!error && response.statusCode === 200) {
-      var info = JSON.parse(body);
-      for (var i = 0; i < 5; i++) {
-        (function(num) {
-          alchemyapi.keywords('url', info.results[num].url, {sentiment: 1}, function(response) {
-            response.title = info.results[num].title;
-            firebase.child('Top News').child(num).set(response);
-          });
-        })(i);
-      }
-    }
-  });
+  var nytAPI = 'http://api.nytimes.com/svc/mostpopular/v2/mostviewed/';
+  var daysKey = '/1?';
+  var sections = {
+    'Top News': 'all-sections',
+    US: 'national',
+    World: 'world',
+    Opinion: 'opinion',
+    Tech: 'technology',
+    Science: 'science',
+  };
 
-  request('http://api.nytimes.com/svc/mostpopular/v2/mostviewed/national/1?' + keys.nytimes, function(error, response, body) {
-    if (!error && response.statusCode === 200) {
-      var info = JSON.parse(body);
-      for (var i = 0; i < 5; i++) {
-        (function(num) {
-          alchemyapi.keywords('url', info.results[num].url, {sentiment: 1}, function(response) {
-            response.title = info.results[num].title;
-            firebase.child('US').child(num).set(response);
-          });
-        })(i);
+  var gatherNews = function(section, title) {
+    request(nytAPI + section + daysKey + keys.nytimes, function(error, response, body) {
+      if (!error && response.statusCode === 200) {
+        var info = JSON.parse(body);
+        for (var i = 0; i < 5; i++) {
+          (function(num) {
+            alchemyapi.keywords('url', info.results[num].url, {sentiment: 1}, function(response) {
+              response.title = info.results[num].title;
+              firebase.child(title).child(num).set(response);
+            });
+          })(i);
+        }
       }
-    }
-  });
+    });
+  };
 
-  request('http://api.nytimes.com/svc/mostpopular/v2/mostviewed/world/1?' + keys.nytimes, function(error, response, body) {
-    if (!error && response.statusCode === 200) {
-      var info = JSON.parse(body);
-      for (var i = 0; i < 5; i++) {
-        (function(num) {
-          alchemyapi.keywords('url', info.results[num].url, {sentiment: 1}, function(response) {
-            response.title = info.results[num].title;
-            firebase.child('World').child(num).set(response);
-          });
-        })(i);
-      }
-    }
-  });
-
-  request('http://api.nytimes.com/svc/mostpopular/v2/mostviewed/opinion/1?' + keys.nytimes, function(error, response, body) {
-    if (!error && response.statusCode === 200) {
-      var info = JSON.parse(body);
-      for (var i = 0; i < 5; i++) {
-        (function(num) {
-          alchemyapi.keywords('url', info.results[num].url, {sentiment: 1}, function(response) {
-            response.title = info.results[num].title;
-            firebase.child('Opinion').child(num).set(response);
-          });
-        })(i);
-      }
-    }
-  });
-
-  request('http://api.nytimes.com/svc/mostpopular/v2/mostviewed/technology/1?' + keys.nytimes, function(error, response, body) {
-    if (!error && response.statusCode === 200) {
-      var info = JSON.parse(body);
-      for (var i = 0; i < 5; i++) {
-        (function(num) {
-          alchemyapi.keywords('url', info.results[num].url, {sentiment: 1}, function(response) {
-            response.title = info.results[num].title;
-            firebase.child('Tech').child(num).set(response);
-          });
-        })(i);
-      }
-    }
-  });
-
-  request('http://api.nytimes.com/svc/mostpopular/v2/mostviewed/science/1?' + keys.nytimes, function(error, response, body) {
-    if (!error && response.statusCode === 200) {
-      var info = JSON.parse(body);
-      for (var i = 0; i < 5; i++) {
-        (function(num) {
-          alchemyapi.keywords('url', info.results[num].url, {sentiment: 1}, function(response) {
-            response.title = info.results[num].title;
-            firebase.child('Science').child(num).set(response);
-          });
-        })(i);
-      }
-    }
-  });
+  for (var key in sections) {
+    gatherNews(sections[key], key);
+  }
 
 };
-
