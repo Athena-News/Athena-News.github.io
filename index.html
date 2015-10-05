@@ -34,12 +34,12 @@
 
       <!-- Header -->
       <div class="grid-content shrink" style="padding: 0;">
-        <ul class="primary menu-bar">
+        <ul class="primary menu-bar" ng-click="drawerOpen = false">
           <li><a><strong class="logo">Athena</strong>Get a Feel for the News</a></li>
           <!-- each news category displayed in header,
             these will run loadCategory when clicked on -->
-          <li ng-repeat="category in categories">
-            <a><strong class="nav-tabs" ng-click="loadCategory(category)" ng-bind="category">
+          <li ng-repeat="category in categories" ng-click="loadCategory(category)">
+            <a><strong class="nav-tabs" ng-bind="category">
               <!-- {{ category }} --><!-- See note at top about ng-bind -->
             </strong></a>
           </li>
@@ -140,7 +140,8 @@
       </div> <!-- end grid-block -->
     </div> <!-- end class="grid-frame vertical" -->
 
-    <footer>
+    <footer class="bottom-drawer" ng-class="{'open': drawerOpen}">
+      <div class="drawer-head" ng-click="drawerOpen = !drawerOpen" ng-bind="drawerOpen ? 'Back to animation' : 'Click here to meet the creators of this site'"></div>
       <div class="grid-block site-details">
         <div class="medium-4 creators">
           <h4 class="meet-us"><strong>Meet the creators of this site</strong><h4>

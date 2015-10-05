@@ -43,7 +43,7 @@ body, #article-dropdown {
   padding: 10%;
 }
 
-.title, .copyright, .technologies {
+.title, .technologies {
   text-align: center;
 }
 
@@ -91,6 +91,44 @@ footer {
   background-color: #055769;
   color: white;
   padding: 1%;
+  padding-top: 0;
+  padding-bottom: 40px;
+}
+
+.bottom-drawer {
+  position: fixed;
+  /*bottom: -200px;*/
+  height: 100%;
+  top: 95%; /* fallback in case calc not supported */
+  top: -o-calc(100% - 40px); /* opera */
+  top: -webkit-calc(100% - 40px); /* google, safari */
+  top: -moz-calc(100% - 40px); /* firefox */
+  top: calc(100% - 40px);
+
+  -webkit-transition: all 500ms ;
+  -moz-transition: all 500ms ;
+  -ms-transition: all 500ms ;
+  -o-transition: all 500ms ;
+  transition: all 500ms ;
+}
+
+.bottom-drawer.open {
+  top: 70px;
+}
+
+.drawer-head {
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  margin: 10px auto;
+}
+
+.copyright {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+  margin: 10px;
 }
 
 .creators {
