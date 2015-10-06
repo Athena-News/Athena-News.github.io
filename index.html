@@ -138,21 +138,56 @@
           </div> <!-- end class="sidebar medium-12" -->
         </div> <!-- end class="medium-2 grid-block" -->
       </div> <!-- end grid-block -->
+
+      <!-- Drawer placeholer, should be same height as drawer-head -->
+      <!-- Needed to prevent the drawer head from blocking content -->
+      <div class="drawer-placeholder"></div>
+
     </div> <!-- end class="grid-frame vertical" -->
 
     <footer class="bottom-drawer" ng-class="{'open': drawerOpen}">
-      <div class="drawer-head" ng-click="drawerOpen = !drawerOpen" ng-bind="drawerOpen ? 'Back to animation' : 'Click here to meet the creators of this site'"></div>
+      <!-- drawer-head is what appears at the bottom when drawer is closed,
+        footer extends up to the header when drawer is open. Clicking
+        on the drawer head will toggle the drawer open or closed. -->
+      <a><div class="drawer-head" ng-click="drawerOpen = !drawerOpen" ng-bind="drawerOpen ? 'Back to animation' : 'Click here to meet the creators of this site'"></div></a>
+
       <div class="grid-block site-details">
-        <div class="medium-4 creators">
-          <h4 class="meet-us"><strong>Meet the creators of this site</strong><h4>
+        <div class="medium-12 creators">
+          <h4 class="meet-us"><strong>Meet the creators of this site</strong></h4>
           <p></p>
-          <p><a href="http://liujoycec.github.io" target="_blank">Joyce Liu</a></p>
-          <p><a href="http://code.rodmachen.com" target="_blank">Rod Machen</a></p>
-          <p><a href="http://www.taylorhayduk.com" target="_blank">Taylor Hayduk</a></p>
-          <p><a href="http://www.tgreenidge.com" target="_blank">Tisha Greenidge</a></p>
-        </div>
-        <div class="medium-8">
+          <div class="grid-block">
+            <div class="medium-3">
+              <a href="http://liujoycec.github.io" target="_blank">
+                <img class="creator-pic" src="./client/assets/img/JoyceLiu.png">
+                <p>Joyce Liu</p>
+              </a>
+            </div>
+            <div class="medium-3">
+              <a href="http://code.rodmachen.com" target="_blank">
+                <img class="creator-pic" src="./client/assets/img/RodMachen.jpeg">
+                <p>Rod Machen</p>
+              </a>
+            </div>
+            <div class="medium-3">
+              <a href="http://www.taylorhayduk.com" target="_blank">
+                <img class="creator-pic" src="./client/assets/img/TaylorGrey.png">
+                <p>Taylor Hayduk</p>
+              </a>
+            </div>
+            <div class="medium-3">
+              <a href="http://www.tgreenidge.com" target="_blank">
+                <img class="creator-pic" src="./client/assets/img/TishaGreenidge.jpeg">
+                <p>Tisha Greenidge</p>
+              </a>
+            </div>
+          </div> <!-- end of class="grid-block" -->
+        </div> <!-- end of class="medium-12 creators" -->
+      </div> <!-- end of class="grid-block site-details" -->
+
+      <div class="grid-block site-details">
+        <div class="medium-12">
           <div class="technologies">
+            <h4 class="tech"><strong>Technologies</strong></h4>
             <img src="client/assets/img/nodejs.svg" id="nodejs">
             <img src="client/assets/img/AngularJS-Shield.png" id="angular">
             <img src="client/assets/img/firebase-logo.png" id="firebase">
