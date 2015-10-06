@@ -28,6 +28,7 @@
 - D3
 - Foundation for Apps
 - Gulp ^3.9.0
+- A deployable node server (Heroku, Azure, Bluemix) or run it locally
 
 ## Development
 
@@ -46,6 +47,8 @@ From within the server directory:
 ```sh
 npm install
 ```
+
+Also, please visit the [Alchemy API](http://www.alchemyapi.com/developers/getting-started-guide/using-alchemyapi-with-nodejs) and [New York Times](http://developer.nytimes.com/) developer pages to secure API keys. Visit [Firebase](https://www.firebase.com) to make an account and create a Firebase app.
 
 ### Roadmap
 
