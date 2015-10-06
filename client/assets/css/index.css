@@ -86,6 +86,7 @@ body, #article-dropdown {
 }
 
 footer {
+  width: 100%;
   font-weight: bold;
   /*background-color: #71A69B;*/
   background-color: #055769;
@@ -98,7 +99,11 @@ footer {
 .bottom-drawer {
   position: fixed;
   /*bottom: -200px;*/
-  height: 100%;
+  height: 100%; /* fallback in case calc not supported */
+  height: -o-calc(100% - 40px); /* opera */
+  height: -webkit-calc(100% - 40px); /* google, safari */
+  height: -moz-calc(100% - 40px); /* firefox */
+  height: calc(100% - 40px);
   top: 95%; /* fallback in case calc not supported */
   top: -o-calc(100% - 40px); /* opera */
   top: -webkit-calc(100% - 40px); /* google, safari */
@@ -116,11 +121,19 @@ footer {
   top: 70px;
 }
 
+/* Bottom margin should match drawer-head height */
+.drawer-placeholder {
+  height: 40px;
+}
+
+
+/* drawer-head is 40px high */
 .drawer-head {
   height: 20px;
   width: 100%;
   text-align: center;
   margin: 10px auto;
+  color: white;
 }
 
 .copyright {
@@ -133,16 +146,21 @@ footer {
 
 .creators {
   padding-left: 10px;
+  padding-right: 10px;
   text-align: center;
 }
 
-.meet-us, .creators a {
+.creator-pic {
+  border-radius: 50%;
+}
+
+.meet-us, .tech, .creators a {
   color: white;
 }
 
 .site-details {
   width: 100%;
-  height: 250px;
+  margin: 10px;
 }
 
 .site-details img {
