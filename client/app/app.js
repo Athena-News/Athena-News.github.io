@@ -120,12 +120,6 @@ angular.module('Athena', ['firebase'])
   // Retrieves data from firebase, to be used by the controller
   var getData = function() {
 
-    // Note for the legacy team: this is currently using a firebase
-    // app from a greenfield team member's personal firebase account
-    // Please create your own firebase app and replace the url here
-    // When you deploy the server for this app, you may want to
-    // consider making this url a private environmental variable and
-    // have this function first do a get request for the private url.
     var firebaseUrl = 'https://boiling-inferno-1345.firebaseio.com/';
 
     // Returns the object retrieved from Firebase
@@ -133,7 +127,7 @@ angular.module('Athena', ['firebase'])
       .$loaded()
       .then(function(data) {
         return data;
-        // returned data object in the following form:
+        // The returned data object will be in the following form:
         /*
         {
           "Top News": [
@@ -190,9 +184,6 @@ angular.module('Athena', ['firebase'])
 // when the page first loads
 .factory('Options', function() {
 
-  // originally we called the first graph "Pie" but
-  // then decided to rename to "Donut" and chose not
-  // to rename the D3 files nor the functions in them
   var graphTypes = {
     Donut: createPie,
     'Word Cloud': createWordCloud,
